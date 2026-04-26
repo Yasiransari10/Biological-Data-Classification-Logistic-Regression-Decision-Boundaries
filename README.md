@@ -1,47 +1,26 @@
-# 🍃 Leaf Species Classification: Statistical & ML Modeling
-[![R-Language](https://img.shields.io/badge/Language-R-blue.svg)](https://www.r-project.org/)
-[![ML-Algorithm](https://img.shields.io/badge/Algorithm-Logistic%20Regression-orange.svg)](https://en.wikipedia.org/wiki/Logistic_regression)
-[![Status](https://img.shields.io/badge/Status-Completed-green.svg)]()
+# 🍃 Biological Data Classification: Logistic Regression & Decision Boundaries
 
-### 🎯 Project Goal
-Can we accurately distinguish between biological species using morphometric measurements? This project develops a predictive model to classify leaf species, focusing on the trade-off between **model complexity** and **biological plausibility**.
+## Project Overview
+[span_3](start_span)This project involves building and evaluating statistical classification models to distinguish between two distinct biological species based on their morphological features (leaf length and width)[span_3](end_span). [span_4](start_span)The objective is to demonstrate the application of logistic regression and analyze the bias-variance trade-off[span_4](end_span).
 
----
+## Tech Stack & Libraries Used
+* **[span_5](start_span)Language:** R[span_5](end_span)
+* **[span_6](start_span)[span_7](start_span)Data Manipulation:** `tidyverse`, `magrittr`[span_6](end_span)[span_7](end_span)
+* **[span_8](start_span)[span_9](start_span)Machine Learning:** `caret`, `pROC`[span_8](end_span)[span_9](end_span)
+* **[span_10](start_span)Visualization:** `ggplot2`[span_10](end_span)
 
-### 📊 Key Performance Metrics
-I compared four different models to find the optimal balance between accuracy and overfitting:
+## Methodology
+1. **[span_11](start_span)[span_12](start_span)Model Training:** Fitted a baseline linear logistic regression model alongside non-linear polynomial logistic regression models (degrees 2, 3, and 4)[span_11](end_span)[span_12](end_span).
+2. **[span_13](start_span)[span_14](start_span)Rigorous Evaluation:** Partitioned the data using a 30% unseen hold-out test set to ensure the models were evaluated on real-world generalization capability[span_13](end_span)[span_14](end_span).
+3. **[span_15](start_span)Metric Tracking:** Evaluated model performance across Accuracy, Sensitivity, Specificity, and Area Under the Curve (AUC) [cite: 209-215].
 
-| Model | Accuracy | AUC Score | Decision Boundary |
-| :--- | :--- | :--- | :--- |
-| **Baseline** | 81.1% | 0.877 | Linear (Too Simple) |
-| **Poly Degree 2** | **84.4%** | **0.940** | **Smooth Curve (Best)** |
-| **Poly Degree 4** | 86.1% | 0.948 | Overfit (Irregular) |
+## Quantifiable Results & Impact
+| Model | Accuracy | Sensitivity | Specificity | AUC |
+| :--- | :--- | :--- | :--- | :--- |
+| **Baseline** | 81.1% | 85.3% | 75.9% | 0.877 |
+| **Polynomial Degree 2** | **84.4%** | **85.3%** | **83.3%** | **0.940** |
+| **Polynomial Degree 4** | 86.1% | 86.8% | 85.2% | 0.948 |
 
-**Final Selection:** The **Polynomial Degree 2** model was chosen. While Degree 4 had a higher AUC, Degree 2 provides a more "biologically plausible" boundary that generalizes better to new data.
 
----
-
-###  Model Visualizations
-*Note: Upload your images to a folder named "plots" for these to appear.*
-
-#### 1. Decision Regions
-> Shows how the Degree 2 model creates a natural curve to separate species.
-![Decision Boundary](plots/decision_boundary_poly2.png)
-
-#### 2. ROC Curve Analysis
-> An AUC of 0.94 demonstrates the high discriminative power of the model.
-![ROC Curve](plots/roc_curve.png)
-
----
-
-### 🛠️ Tech Stack & Skills
-- **Statistical Modeling:** Logistic Regression (Linear & Polynomial).
-- **Evaluation:** K-fold Cross-Validation, ROC/AUC, Sensitivity/Specificity.
-- **Libraries:** `tidyverse`, `caret`, `pROC`, `ggplot2`.
-
----
-
-### 🚀 How to Run
-1. Clone the repo: `git clone https://github.com/your-username/leaf-classification.git`
-2. Open `script.R` in RStudio.
-3. Ensure the dataset `leaf_data.csv` is in the same directory.
+## Strategic Conclusion
+[cite_start]The **Degree 2 Polynomial Model** was selected as the optimal solution[span_15](end_span). [span_16](start_span)[span_17](start_span)While higher-degree models yielded slightly better raw metrics, they resulted in overly irregular decision boundaries that were deemed biologically implausible and indicative of overfitting[span_16](end_span)[span_17](end_span). [span_18](start_span)The Degree 2 model provides the best balance of predictive power and real-world interpretability[span_18](end_span).
